@@ -16,7 +16,7 @@ public class UserDAO {
     private Set<User> allUsers;
 
     private UserDAO() {
-        allUsers = new HashSet<User>();
+        allUsers = new HashSet<>();
     }
 
     public static UserDAO getInstance() {
@@ -35,7 +35,7 @@ public class UserDAO {
         try {
             connection = ConnectionPoolHolder.getConnection();
             statement = connection.prepareStatement("SELECT id,first_name, last_name, birth_date,email FROM user" +
-                    " WHERE password = ? AND name = ?");
+                    " WHERE password = ? AND login = ?");
 
             statement.setString(1,password);
             statement.setString(2,login);

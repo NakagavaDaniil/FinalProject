@@ -20,4 +20,5 @@ public class DAOFactory {
     public UserDAO getUserDAO() {
         return UserDAO.getInstance();
     }
+
 }

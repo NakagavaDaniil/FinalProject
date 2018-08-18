@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Registration</title>
-    <link rel="stylesheet" type="text/css" href="css/styleRegister.css">
+    <link rel="stylesheet" type="text/css" href="css">
 </head>
 <body>
 <form method="post" action="/controller?action=reg">

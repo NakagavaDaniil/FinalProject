@@ -13,6 +13,6 @@
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
     <error-page>
-        <location>/error.jsp</location>
+        <location>/WEB-INF/view/error.jsp</location>
     </error-page>
 </web-app>

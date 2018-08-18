@@ -24,6 +24,23 @@ public class DAOService {
         return false;
     }
 
+    public boolean changeDBData (String data ,String tableName ,String rowName) {
+        try {
+
+
+            final String SELECT_USER_BY_EMAIL = "UPDATE  "+tableName+"SET"+rowName+"="+data+"where ID";
+            PreparedStatement statement = ConnectionPoolHolder.getConnection().prepareStatement(SELECT_USER_BY_EMAIL);
+            statement.setString(1, data);
+            ResultSet rs = statement.executeQuery();
+
+            return rs.next();
+        }catch (Exception e){
+            e.printStackTrace();
+            ///TODO logger
+        }
+        return false;
+    }
+
 
 
 }
