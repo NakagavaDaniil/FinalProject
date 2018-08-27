@@ -3,6 +3,7 @@ package model.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class ConnectionPoolHolder {
 
@@ -12,12 +13,15 @@ public class ConnectionPoolHolder {
 
                 try {
 
+                        Class.forName("com.mysql.jdbc.Driver");
 
-                    connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb?characterEncoding=utf-8",
-                            "root",
-                            "password");
+                    ResourceBundle sqlData = ResourceBundle.getBundle("MySqlConnection");
 
-                }catch (SQLException e){
+                    connection = DriverManager.getConnection(sqlData.getString("url_characterEncoding"),
+                            sqlData.getString("user"),
+                            sqlData.getString("password"));
+
+                }catch (Exception e){
                     e.printStackTrace();
                 }
             }

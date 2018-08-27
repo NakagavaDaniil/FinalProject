@@ -4,11 +4,7 @@ public class DAOFactory {
     private static DAOFactory factory;
 
     private DAOFactory() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static synchronized DAOFactory getInstance() {

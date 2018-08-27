@@ -33,8 +33,8 @@ CREATE TABLE `judge` (
   KEY `judge_questions_id_fk` (`question_list`),
   KEY `judge_user_login_fk` (`judge_login`),
   CONSTRAINT `judge_questions_id_fk` FOREIGN KEY (`question_list`) REFERENCES `questions` (`id`),
-  CONSTRAINT `judge_user_login_fk` FOREIGN KEY (`judge_login`) REFERENCES `user` (`login`),
-  CONSTRAINT `judge_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `judge_user_login_fk` FOREIGN KEY (`judge_login`) REFERENCES users (`login`),
+  CONSTRAINT `judge_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES users (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `player` (
@@ -45,8 +45,8 @@ CREATE TABLE `player` (
   `tottal_wins` int(11) DEFAULT NULL,
   UNIQUE KEY `player_user_login_uindex` (`user_login`),
   KEY `player_user_user_id_fk` (`id`),
-  CONSTRAINT `player_user_login_fk` FOREIGN KEY (`user_login`) REFERENCES `user` (`login`),
-  CONSTRAINT `player_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES `user` (`user_id`)
+  CONSTRAINT `player_user_login_fk` FOREIGN KEY (`user_login`) REFERENCES users (`login`),
+  CONSTRAINT `player_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES users (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `questions` (

@@ -1,44 +1,45 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Администратор
-  Date: 12.08.2018
-  Time: 21:51
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Registration</title>
-    <link rel="stylesheet" type="text/css" href="css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/view/myHeader/bootstrap.min.css">
+    <link rel="stylesheet" href="/view/myHeader/registration.css">
+    <title>Login</title>
 </head>
 <body>
-<form method="post" action="/controller?action=reg">
-    <div class="container">
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+        <form method="post" action="/reg">
+            <div class="centre">
+                <h1>Register</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+                <br>
+                <p>Email</p>
+                <input type="text" placeholder="Enter Email" name="email" required>
 
-        <b>Email</b>
-        <input type="text" placeholder="Enter Email" name="email" required>
-
-        <b>Login</b>
-        <input type="text" placeholder="Enter Login" name="login" required>
-        <hr>
-
-       <b>Password</b>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-
-        <b>Name</b>
-        <input type="text" placeholder="Enter Name" name="name" required>
-        <hr>
-
-        <b>Surname</b>
-        <input type="text" placeholder="Enter Surname" name="surname" required>
+                <p>Login</p>
+                <input type="text" placeholder="Enter Login" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{3,19}$" required>
 
 
-        <b>Birth Date</b>
-        <div class="fallbackDatePicker">
+                <p>Password</p>
+                <input type="password" placeholder="Enter Password" name="psw"  required>
+
+
+                <p>Name</p>
+                <input type="text" placeholder="Enter Name" name="name" required>
+
+
+                <p>Surname</p>
+                <input type="text" placeholder="Enter Surname" name="surname" required>
+
+
+                <p>Birth Date</p>
+                <div class="fallbackDatePicker">
       <span>
         <label for="day">Day:</label>
         <select id="day" name="day">
@@ -75,7 +76,7 @@
           <option value="31">31</option>
         </select>
       </span>
-            <span>
+                    <span>
         <label for="month">Month:</label>
         <select id="month" name="month">
           <option selected>January</option>
@@ -92,7 +93,7 @@
           <option>December</option>
         </select>
       </span>
-            <span>
+                    <span>
         <label for="year">Year:</label>
         <select id="year" name="year">
     <option value="2013">2013</option>
@@ -207,16 +208,20 @@
 </select>
 
       </span>
-        </div>
-        <hr>
+                </div>
+                <hr>
 
 
-        <button type="submit" class="registerbtn">Register</button>
+                <button type="submit" class="btn_style" style="margin-bottom: 30px"><a>Register</a></button>
+            </div>
+
+            <br>
+
+                <p class="centre" style="margin-top: 30px">Already have an account? <a href="/main">Sign In</a>.</p>
+
+        </form>
     </div>
-
-    <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
     </div>
-</form>
+</div>
 </body>
 </html>

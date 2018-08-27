@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class User {
 
-    Long ID;
-    String USER_FIRST_NAME;
-    String USER_LAST_NAME;
-    Date BIRTH_DATE;
-    String USER_LOGIN;
-    String USER_PASSWORD;
-    String EMAIL;
+  private int ID;
+  private  String USER_FIRST_NAME;
+  private  String USER_LAST_NAME;
+  private  Date BIRTH_DATE;
+  private  String USER_LOGIN;
+  private  String USER_PASSWORD;
+  private  String EMAIL;
 
     public User(String USER_FIRST_NAME, String USER_LAST_NAME, Date BIRTH_DATE, String USER_LOGIN, String USER_PASSWORD, String EMAIL) {
         this.USER_FIRST_NAME = USER_FIRST_NAME;
@@ -24,11 +24,11 @@ public class User {
     public User() {
     }
 
-    public Long getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

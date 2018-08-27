@@ -38,7 +38,7 @@ public class RegistrationCommand implements Command {
 
         int add = userDAO.addUser(user);
 
-        String result = (add == 0) ? "register.jsp" : "userPage.jsp";
+        String result = (add == 0) ? "view/register.jsp" : "view/main.jsp";
 
         if (add == 0) {
             result="error.jsp";

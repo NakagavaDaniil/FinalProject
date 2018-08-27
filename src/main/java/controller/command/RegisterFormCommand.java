@@ -2,10 +2,9 @@ package controller.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MainCommand implements Command {
+public class RegisterFormCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
-
-        System.out.println("Main");return "main.jsp";
+        return "view/myHeader/registraion.jsp";
     }
 }

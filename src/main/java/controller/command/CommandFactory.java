@@ -21,14 +21,16 @@ public class CommandFactory {
 
     {
 
-        command.put("login", new LoginCommand());
-        command.put("main",new MainCommand());
-        command.put("reg",new RegistrationCommand());
+        command.put("/login", new LoginCommand());
+        command.put("/main",new MainCommand());
+        command.put("/reg",new RegistrationCommand());
+        command.put("/registration",new RegisterFormCommand());
 
     }
 
     public Command getCommand(HttpServletRequest request) {
-        String action = request.getParameter("action");
+        String action = request.getRequestURI();
+        System.out.println(action);
         Command command = this.command.get(action);
         return command;
     }

@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.net.httpserver.HttpServer;
 import controller.command.Command;
 import controller.command.CommandFactory;
 
@@ -27,10 +26,12 @@ public class Servlet  extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        System.out.println("Srvlet");
         CommandFactory commandFactory = CommandFactory.commandFactory();
         Command command = commandFactory.getCommand(httpServletRequest);
         String page = command.execute(httpServletRequest);
         RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(page);
+
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }
