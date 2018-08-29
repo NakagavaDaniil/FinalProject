@@ -6,6 +6,7 @@ public class MainCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
 
-        System.out.println("Main");return "main.jsp";
+     return "/view/jsp/main.jsp";
+
     }
 }

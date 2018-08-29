@@ -1,10 +1,11 @@
 package model.dao;
 
+import model.entity.Player;
+
 public class DAOFactory {
     private static DAOFactory factory;
 
     private DAOFactory() {
-
     }
 
     public static synchronized DAOFactory getInstance() {
@@ -16,5 +17,7 @@ public class DAOFactory {
     public UserDAO getUserDAO() {
         return UserDAO.getInstance();
     }
+    public PlayerDAO getPlayerDAO(){return PlayerDAO.getInstance();}
+
 
 }

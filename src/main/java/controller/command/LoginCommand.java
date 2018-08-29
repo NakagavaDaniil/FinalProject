@@ -7,7 +7,7 @@ import model.entity.User;
 import model.service.DAOService;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 
 public class LoginCommand implements Command {
@@ -17,29 +17,35 @@ public class LoginCommand implements Command {
 
         DAOFactory factory = DAOFactory.getInstance();
         UserDAO userDAO = factory.getUserDAO();
-
         User user = userDAO.getUser(LOGIN, PASSWORD);
+
+        HttpSession session = request.getSession();
 
         if( LOGIN == null || LOGIN.equals("") || PASSWORD == null || PASSWORD.equals("")  ){
 
-            return "view/main.jsp";
+            return "view/jsp/main.jsp";
         }
 
         DAOService daoService = new DAOService();
 
         if (!daoService.checkWithDB(LOGIN,"login")){
 
-            return "view/main.jsp"; }
+            return "view/jsp/main.jsp"; }
+try {
 
-//        if(CommandUtility.checkUserIsLogged(request, LOGIN)){
-//            return "/error.jsp";
-//        TODO }
 
-        request.setAttribute("userLogin",user.getUSER_LOGIN());
-        request.setAttribute("userID",user.getID());
+    if (CommandUtility.checkUserIsLogged(user)) {
+        return "view/jsp/main.jsp";
+    }
+}catch (Exception e){
+    e.printStackTrace();
+}
 
-        //TODO change direct
-        return "view/main.jsp";
+      session.setAttribute("userLogin",user.getUSER_LOGIN());
+        session.setAttribute("userId",user.getID());
+
+
+        return "/view/jsp/main.jsp";
 
 
     }

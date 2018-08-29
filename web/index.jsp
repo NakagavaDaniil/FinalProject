@@ -12,7 +12,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <c:import url="main.jsp" />
+  <a href="/view/jsp/main.jsp">to main</a>
   $END$
   </body>
 </html>

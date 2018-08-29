@@ -25,6 +25,9 @@ public class CommandFactory {
         command.put("/main",new MainCommand());
         command.put("/reg",new RegistrationCommand());
         command.put("/registration",new RegisterFormCommand());
+        command.put("/logOut",new LogoutCommand());
+        command.put("/userPage", new UserInfoCommand());
+        command.put("/playerPage",new PlayerInfoCommand());
 
     }
 

@@ -14,15 +14,14 @@
 <body>
 
 <header class="header">
-        <div class="container">
-            <div class="row">
 
+<div class="row">
                 <div  class="col-lg-5" >
 
                     <img src="/myImg/Logo_ru.png" class="logo flex-fill">
 
                 </div>
-                        <c:if test="${requestScope.userLogin eq null}">
+                        <c:if test="${sessionScope.userLogin eq null}">
                       <div class="col-lg-1 ml-auto authentication">
                           <form action="/login" method="post" >
                          <input type="text" class="input" placeholder="Login" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$">
@@ -34,10 +33,13 @@
                           </form>
                       </div>
                         </c:if>
-                        <c:if test="${requestScope.userLogin ne null}">
-                        <div class="col-lg-3  mt-lg-4  ml-auto">
-                            <p><c:out value="${requestScope.userLogin}"></c:out></p>
-                        </div>
+                        <c:if test="${sessionScope.userLogin ne null}">
+                      <p><c:out value="${sessionScope.userLogin}"></c:out></p>
+                            <form action="/logOut">
+                                <button type="submit">
+                                    Logout
+                                </button>
+                            </form>
                         </c:if>
                 <div  class="col-lg-1 ml-auto" >
                     <ul class="menu   ml-auto locale_menu">
@@ -48,21 +50,7 @@
 
             </div>
 
-        </div>
-        </div>
-    <div class="row">
-        <div class="flex-fill">
-            <nav>
-                <ul class="col-lg-12 flex-fill menu ml-auto">
-                    <li><a class="text" href="/"><span>Home</span></a></li>
-                    <li><a class="text" href="/"><span>Questions</span></a></li>
-                    <li><a class="text" href="/"><span>team</span></a></li>
-                    <li><a  class="text" href="/"><span>About me</span></a></li>
-                    <li><a  class="text" href="/"><span>Contact</span></a></li>
-                </ul></nav></div>
-
-
-    </div>
+</div>
 </header>
 
 

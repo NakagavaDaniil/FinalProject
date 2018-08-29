@@ -1,20 +1,34 @@
 package controller.command;
 
+import model.entity.User;
+
+
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
+
+import java.util.HashMap;
+
 
 public class CommandUtility {
-    static boolean checkUserIsLogged(HttpServletRequest request, String userName){
-        HashSet<String> loggedUsers = (HashSet<String>) request.getSession().getServletContext()
-                .getAttribute("loggedUsers");
+    private static HashMap<String,User> loggedUsers=null;
 
-        if (!loggedUsers.stream().allMatch(loggedUsers::equals)) {
-            loggedUsers.add(userName);
-            request.getSession().getServletContext()
-                    .setAttribute("loggedUsers", loggedUsers);
-            return false;
-        } else {
+    {
+        loggedUsers =new HashMap<>();
+    }
+
+    static boolean checkUserIsLogged( User user){
+        if(loggedUsers.containsKey(user.getUSER_LOGIN())){
             return true;
+        }else {
+            loggedUsers.put(user.getUSER_LOGIN(),user);
+            return false;
         }
+    }
+    public void removeUser(String login){
+     loggedUsers.remove(login);
+    }
+
+
+    public  User getLoggedUser(String login){
+        return loggedUsers.get(login);
     }
 }

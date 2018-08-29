@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class User {
 
+
+
+
   private int ID;
   private  String USER_FIRST_NAME;
   private  String USER_LAST_NAME;
@@ -20,6 +23,9 @@ public class User {
         this.USER_PASSWORD = USER_PASSWORD;
         this.EMAIL = EMAIL;
     }
+
+
+
 
     public User() {
     }

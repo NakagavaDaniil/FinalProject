@@ -12,7 +12,7 @@ import java.util.Set;
 public class UserDAO {
 
     private static UserDAO instance;
-
+    private static User user;
     private Set<User> allUsers;
 
     private UserDAO() {
@@ -25,6 +25,8 @@ public class UserDAO {
         }
         return instance;
     }
+
+
 
     public User getUser(String login, String password) {
         User user = null;
@@ -56,6 +58,36 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return user;
+    }
+
+    public User getUserById(int id){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ConnectionPoolHolder.getConnection();
+        statement = connection.prepareStatement("SELECT user_id,first_name, last_name, birth_date,email,login,password FROM users" +
+                " WHERE user_id = ?");
+
+        statement.setInt(1,id);
+
+
+        ResultSet rs = statement.executeQuery();
+
+        if (rs.next()) {
+            user = new User();
+            user.setID(rs.getInt(1));
+            user.setUSER_FIRST_NAME(rs.getString(2));
+            user.setUSER_LAST_NAME(rs.getString(3));
+            user.setBIRTH_DATE(rs.getDate(4));
+            user.setEMAIL(rs.getString(5));
+            user.setUSER_LOGIN(rs.getString(6));
+            user.setUSER_PASSWORD(rs.getString(7));
+
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
         return user;
     }
     public int addUser(User user) {
