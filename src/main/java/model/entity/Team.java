@@ -6,9 +6,18 @@ public class Team {
 
 
    private ArrayList<Player> team;
+   private String name;
    private int tottalWinsCount;
    private int tottalGamesCount;
    private ArrayList<Game> gameHistory;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getTottalWinsCount() {
         return tottalWinsCount;
@@ -47,5 +56,10 @@ public class Team {
 
     public void setTeam(ArrayList<Player> team) {
         this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return getName()+",";
     }
 }

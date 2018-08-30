@@ -99,7 +99,7 @@ button a{
     display: inline-block;
         width: auto;
     margin: 10px 20px 20px 0px;
-
+    z-index: 0;
     position: relative;
     -webkit-transform: skewy(-4deg);
     -webkit-backface-visibility: hidden;

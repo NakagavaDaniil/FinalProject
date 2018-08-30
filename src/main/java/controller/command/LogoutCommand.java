@@ -14,6 +14,7 @@ public class LogoutCommand implements Command {
 
 
 
+
         return "/view/jsp/main.jsp";
     }
 }

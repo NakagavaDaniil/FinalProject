@@ -1,16 +1,20 @@
 package controller.command;
 
-import model.dao.DAOFactory;
-import model.dao.UserDAO;
-import model.entity.User;
-import model.service.DAOService;
 
+import model.entity.User;
+import model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
 public class RegistrationCommand implements Command {
+    private UserService userService;
+
+    public RegistrationCommand(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public String execute(HttpServletRequest request) {
 
@@ -21,9 +25,6 @@ public class RegistrationCommand implements Command {
         String PASSWORD=request.getParameter("psw");
         Date  BIRTH_DATE = dateConverter(request);
 
-        DAOService daoService = new DAOService();
-
-        if (daoService.checkWithDB(EMAIL,"email")){return "/login.jsp"; }
 
         User user = new User();
         user.setUSER_FIRST_NAME(FIRST_NAME);
@@ -33,22 +34,22 @@ public class RegistrationCommand implements Command {
         user.setUSER_PASSWORD(PASSWORD);
         user.setBIRTH_DATE(BIRTH_DATE);
 
-        DAOFactory factory = DAOFactory.getInstance();
-        UserDAO userDAO = factory.getUserDAO();
+        HttpSession session = request.getSession();
 
-        int add = userDAO.addUser(user);
 
-        String result = (add == 0) ? "view/register.jsp" : "view/main.jsp";
 
-        if (add == 0) {
-            result="error.jsp";
+        if (userService.register(user)) {
+            session.setAttribute("userLogin",user.getUSER_LOGIN());
+            session.setAttribute("userId",user.getID());
+            return "/view/jsp/main.jsp";
+
         } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
+          request.setAttribute("exist",true);
+          return "/view/jsp/registration.jsp";
         }
 
 
-        return result;
+
     }
 
     private Date dateConverter(HttpServletRequest request){

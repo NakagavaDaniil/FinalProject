@@ -1,22 +1,28 @@
 package controller.command;
 
-import model.dao.UserDAO;
+
+
+import model.entity.Player;
 import model.entity.User;
+import model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfoCommand implements Command{
+    UserService userService;
+
+    public UserInfoCommand(UserService userService) {
+        this.userService = userService;
+    }
+
     @Override
     public String execute(HttpServletRequest request) {
 
-
-        UserDAO userDAO = UserDAO.getInstance();
-        List<User> empList = new ArrayList<User>();
-
-            empList.add(userDAO.getUserById((Integer) request.getSession().getAttribute("userId")));
-            request.setAttribute("empList", empList);
+        List<User> empList = new ArrayList<>();
+        empList.add(userService.getById((Integer) request.getSession().getAttribute("userId")));
+        request.setAttribute("empList", empList);
 
 
         return "/view/jsp/userPage.jsp";

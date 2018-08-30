@@ -1,41 +1,31 @@
 package controller.command;
 
-import model.dao.DAOFactory;
-import model.dao.PlayerDAO;
-import model.dao.UserDAO;
+
+
 import model.entity.Player;
 import model.entity.User;
+import model.service.PlayerService;
+import model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class PlayerInfoCommand implements Command {
-    private static Player user =null ;
+    PlayerService playerService;
+
+    public PlayerInfoCommand(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
 
-try {
 
-
-    CommandUtility commandUtility = new CommandUtility();
-    user = (Player) commandUtility.getLoggedUser((String) request.getSession().getAttribute("userLogin"));
-
-    DAOFactory daoFactory = DAOFactory.getInstance();
-    PlayerDAO playerDAO = daoFactory.getPlayerDAO();
-    playerDAO.getPlayer(user.getUSER_LOGIN());
-
-
-
-    List<Player> empList = new ArrayList<>();
-
-    empList.add(playerDAO.getPlayer(user.getUSER_LOGIN()));
-    request.setAttribute("empList", empList);
-}catch (Exception e){
-    e.printStackTrace();
-}
-
+        List<Player> empList = new ArrayList<Player>();
+        empList.add(playerService.getById((Integer) request.getSession().getAttribute("userId")));
+        request.setAttribute("empList", empList);
 
         return "/view/jsp/playerPage.jsp";
     }

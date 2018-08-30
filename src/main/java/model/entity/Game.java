@@ -3,71 +3,52 @@ package model.entity;
 import java.time.LocalDateTime;
 
 public class Game {
-
-    private Judge judge;
-    private Team teamA;
-    private Team teamB;
-    private String teamWinnerName;
-    private LocalDateTime localDateTimeOfGame;
-    private int numberOfQuestions;
+    private int id;
+        private String judgeLogin;
+        private String loserTeam;
+        private String winnerTeam;
+        private LocalDateTime dateTimeOfGame;
 
     public Game() {
     }
 
-    public Game(Judge judge, Team teamA, Team teamB, String teamWinnerName, LocalDateTime localDateTimeOfGame, int numberOfQuestions) {
-        this.judge = judge;
-        this.teamA = teamA;
-        this.teamB = teamB;
-        this.teamWinnerName = teamWinnerName;
-        this.localDateTimeOfGame = localDateTimeOfGame;
-        this.numberOfQuestions = numberOfQuestions;
+    public int getId() {
+        return id;
     }
 
-    public Judge getJudge() {
-        return judge;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setJudge(Judge judge) {
-        this.judge = judge;
+    public String getJudgeLogin() {
+        return judgeLogin;
     }
 
-    public Team getTeamA() {
-        return teamA;
+    public void setJudgeLogin(String judgeLogin) {
+        this.judgeLogin = judgeLogin;
     }
 
-    public void setTeamA(Team teamA) {
-        this.teamA = teamA;
+    public String getLoserTeam() {
+        return loserTeam;
     }
 
-    public Team getTeamB() {
-        return teamB;
+    public void setLoserTeam(String loserTeam) {
+        this.loserTeam = loserTeam;
     }
 
-    public void setTeamB(Team teamB) {
-        this.teamB = teamB;
+    public String getWinnerTeam() {
+        return winnerTeam;
     }
 
-    public String getTeamWinnerName() {
-        return teamWinnerName;
+    public void setWinnerTeam(String winnerTeam) {
+        this.winnerTeam = winnerTeam;
     }
 
-    public void setTeamWinnerName(String teamWinnerName) {
-        this.teamWinnerName = teamWinnerName;
+    public LocalDateTime getDateTimeOfGame() {
+        return dateTimeOfGame;
     }
 
-    public LocalDateTime getLocalDateTimeOfGame() {
-        return localDateTimeOfGame;
-    }
-
-    public void setLocalDateTimeOfGame(LocalDateTime localDateTimeOfGame) {
-        this.localDateTimeOfGame = localDateTimeOfGame;
-    }
-
-    public int getNumberOfQuestions() {
-        return numberOfQuestions;
-    }
-
-    public void setNumberOfQuestions(int numberOfQuestions) {
-        this.numberOfQuestions = numberOfQuestions;
+    public void setDateTimeOfGame(LocalDateTime dateTimeOfGame) {
+        this.dateTimeOfGame = dateTimeOfGame;
     }
 }

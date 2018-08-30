@@ -26,7 +26,7 @@ public class Servlet  extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        System.out.println("Srvlet");
+
         CommandFactory commandFactory = CommandFactory.commandFactory();
         Command command = commandFactory.getCommand(httpServletRequest);
         String page = command.execute(httpServletRequest);

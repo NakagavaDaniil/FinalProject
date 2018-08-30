@@ -1,48 +1,44 @@
 package controller.command;
 
 
-import model.dao.DAOFactory;
-import model.dao.UserDAO;
 import model.entity.User;
-import model.service.DAOService;
+import model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 
 public class LoginCommand implements Command {
-    public String execute (HttpServletRequest request)  {
-        String LOGIN = request.getParameter("login");
-        String PASSWORD = request.getParameter("psw");
+    private UserService userService;
+    public LoginCommand(UserService userService) {
+        this.userService=userService;
+    }
 
-        DAOFactory factory = DAOFactory.getInstance();
-        UserDAO userDAO = factory.getUserDAO();
-        User user = userDAO.getUser(LOGIN, PASSWORD);
+    public String execute (HttpServletRequest request)  {
+
+        String login = request.getParameter("login");
+        String password = request.getParameter("psw");
 
         HttpSession session = request.getSession();
 
-        if( LOGIN == null || LOGIN.equals("") || PASSWORD == null || PASSWORD.equals("")  ){
+        if( login == null || login.equals("") || password == null || password.equals("")  ){
 
             return "view/jsp/main.jsp";
         }
 
-        DAOService daoService = new DAOService();
+       try {
+          if (CommandUtility.checkUserIsLogged(login)) {
+              request.setAttribute("logged",true);
+              return "view/jsp/main.jsp";
+          }
+        }catch (Exception e){
+           e.printStackTrace();
+        }
+        Optional<User> user = userService.login(login,password);
 
-        if (!daoService.checkWithDB(LOGIN,"login")){
-
-            return "view/jsp/main.jsp"; }
-try {
-
-
-    if (CommandUtility.checkUserIsLogged(user)) {
-        return "view/jsp/main.jsp";
-    }
-}catch (Exception e){
-    e.printStackTrace();
-}
-
-      session.setAttribute("userLogin",user.getUSER_LOGIN());
-        session.setAttribute("userId",user.getID());
+       session.setAttribute("userLogin",user.get().getUSER_LOGIN());
+        session.setAttribute("userId",user.get().getID());
 
 
         return "/view/jsp/main.jsp";

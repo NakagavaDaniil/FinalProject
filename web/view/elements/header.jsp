@@ -37,7 +37,7 @@
                       <p><c:out value="${sessionScope.userLogin}"></c:out></p>
                             <form action="/logOut">
                                 <button type="submit">
-                                    Logout
+                                    <a  class="text">Logout</a>
                                 </button>
                             </form>
                         </c:if>

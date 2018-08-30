@@ -86,7 +86,9 @@ public class User {
         this.BIRTH_DATE = BIRTH_DATE;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "{"+getUSER_LOGIN()+"-login"+
+                "\n"+getUSER_PASSWORD()+"-password"+"}";
+    }
 }

@@ -1,50 +1,27 @@
 package model.dao;
 
-import model.connection.ConnectionPoolHolder;
+
+import model.entity.Game;
 import model.entity.Player;
-import model.entity.User;
+import model.entity.Team;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class PlayerDAO {
-
-    private static PlayerDAO instance;
-    private static Player user;
-    public static PlayerDAO getInstance() {
-        if (instance == null) {
-            instance = new PlayerDAO();
-        }
-        return instance;
-    }
-    public Player getPlayer(String login) {
-        user = null;
-
-        Connection connection = null;
-        PreparedStatement statement = null;
-
-        try {
-            connection = ConnectionPoolHolder.getConnection();
-            statement = connection.prepareStatement("SELECT tottal_pints,tottal_games,tottal_wins FROM player" +
-                    " WHERE user_login=?");
+import java.util.List;
 
 
-            statement.setString(1,login);
+public interface PlayerDAO extends GenericDao<Player> {
+//TODO maybe add something
 
-            ResultSet rs = statement.executeQuery();
+    List<Game> getGameHistoy(List<Team> teamList);
+    List<Game> findLoses(List<String> teamList);
+    List<Game>  findWins(List<String> teamList);
+    List<Game>  findAllGames();
+    List<Game>  findLoses(String teamName);
+    List<Game>  findWins(String teamName);
+    List<Game> findAllGames(String teamName);
 
-            if (rs.next()) {
-                user.setTottalPointsCount(rs.getInt(1));
-                user.setTottalGamesCount(rs.getInt(2));
-                user.setTottalWinsCount(rs.getInt(3));
+    List<Team> findAllTeams();
+    Team findTeam(String teamName);
+    List<Team> getMyTeams(int id);
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
-    }
 
 }

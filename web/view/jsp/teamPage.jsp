@@ -24,7 +24,14 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <c:if test="${requestScope.empList ne null}">
+            <c:forEach items="${requestScope.empList}" var="emp">
+                <tr>
+                    <p> <td>Team Name : <c:out value="${emp.name}"></c:out></td></p>
 
+                </tr>
+            </c:forEach>
+        </c:if>
     </div>
 </div>
 <div class="row">

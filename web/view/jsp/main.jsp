@@ -29,7 +29,7 @@
 </c:if>
 <div class="row">
     <div class="col-lg-12">
-        <c:import url="/view/elements/mainInformation.jsp"></c:import>
+       Main info
     </div>
 </div>
 <div class="row">

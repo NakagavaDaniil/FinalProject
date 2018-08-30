@@ -1,23 +1,31 @@
 package model.dao;
 
-import model.entity.Player;
 
-public class DAOFactory {
-    private static DAOFactory factory;
+import model.dao.impl.JDBCDaoFactory;
 
-    private DAOFactory() {
-    }
+import java.sql.SQLException;
 
-    public static synchronized DAOFactory getInstance() {
-        if (factory == null) {
-            factory = new DAOFactory();
+public abstract class DaoFactory {
+    private static DaoFactory daoFactory;
+
+    public abstract UserDAO createUserDao();
+    public abstract PlayerDAO createPlayerDao();
+
+
+    public static DaoFactory getInstance(){
+        if( daoFactory == null ){
+            synchronized (DaoFactory.class){
+                if(daoFactory==null){
+                    DaoFactory temp = null;
+                    try {
+                        temp = new JDBCDaoFactory();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    daoFactory = temp;
+                }
+            }
         }
-        return factory;
+        return daoFactory;
     }
-    public UserDAO getUserDAO() {
-        return UserDAO.getInstance();
-    }
-    public PlayerDAO getPlayerDAO(){return PlayerDAO.getInstance();}
-
-
 }

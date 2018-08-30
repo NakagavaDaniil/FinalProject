@@ -71,7 +71,7 @@ CREATE TABLE `team_player` (
   KEY `team_player_teamname_id_fk` (`team_id`),
   KEY `team_player_player_id_fk` (`player_id`),
   CONSTRAINT `team_player_player_id_fk` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`),
-  CONSTRAINT `team_player_teamname_id_fk` FOREIGN KEY (`team_id`) REFERENCES `teamname` (`id`)
+  CONSTRAINT `team_player_teamname_id_fk` FOREIGN KEY (`team_id`) REFERENCES `teamname` (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 CREATE TABLE `teamname` (

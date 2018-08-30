@@ -1,34 +1,28 @@
 package controller.command;
 
-import model.entity.User;
+import model.service.UserService;
 
-
-import javax.servlet.http.HttpServletRequest;
-
-import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class CommandUtility {
-    private static HashMap<String,User> loggedUsers=null;
+    //all logged users
+private static CopyOnWriteArrayList<String> loggedUsers;
 
     {
-        loggedUsers =new HashMap<>();
+        loggedUsers =new CopyOnWriteArrayList<>();
     }
 
-    static boolean checkUserIsLogged( User user){
-        if(loggedUsers.containsKey(user.getUSER_LOGIN())){
+    static boolean checkUserIsLogged(String login){
+        if(loggedUsers.contains(login)){
             return true;
         }else {
-            loggedUsers.put(user.getUSER_LOGIN(),user);
+            loggedUsers.add(login);
             return false;
         }
     }
     public void removeUser(String login){
-     loggedUsers.remove(login);
+        loggedUsers.remove(login);
     }
 
-
-    public  User getLoggedUser(String login){
-        return loggedUsers.get(login);
-    }
 }

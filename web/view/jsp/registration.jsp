@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="/view/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/view/css/style.css" type="text/css">
     <title>Login</title>
@@ -17,28 +19,29 @@
             <div class="centre">
                 <h1>Register</h1>
                 <p>Please fill in this form to create an account.</p>
+                <c:if test="${requestScope.exist ne null}">
+                    <p>Email or login already exist!</p>
+                </c:if>
                 <hr>
                 <br>
-                <p>Email</p>
+
                 <input type="text" placeholder="Enter Email" name="email" required>
 
-                <p>Login</p>
+
                 <input type="text" placeholder="Enter Login" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{3,19}$" required>
 
 
-                <p>Password</p>
                 <input type="password" placeholder="Enter Password" name="psw"  required>
 
 
-                <p>Name</p>
+
                 <input type="text" placeholder="Enter Name" name="name" required>
 
 
-                <p>Surname</p>
                 <input type="text" placeholder="Enter Surname" name="surname" required>
 
 
-                <p>Birth Date</p>
+                <tx class="text">Birth Date</tx>
                 <div class="fallbackDatePicker">
       <span>
         <label for="day">Day:</label>

@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Final:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Final_war_exploded</output-path>
+  <artifact type="exploded-war" name="FInalProject:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/FInalProject_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Final" />
+          <element id="module-output" name="FInalProject" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.6" />
@@ -14,7 +14,7 @@
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="Final/web/Web" />
+      <element id="javaee-facet-resources" facet="FInalProject/web/Web" />
     </root>
   </artifact>
 </component>
