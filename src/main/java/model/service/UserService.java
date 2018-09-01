@@ -21,6 +21,7 @@ public class UserService {
     public User getById(int id){
         User user;
             user=userDao.findById(id);
+        System.out.println(user);
         return user;
     }
 

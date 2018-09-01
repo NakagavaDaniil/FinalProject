@@ -1,6 +1,15 @@
-<!doctype html>
-<html lang="en">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="data"/>
+<!DOCTYPE html>
+<html lang="${language}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,33 +24,45 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
+            <div align="right">
+                <form>
+                    <select id="language" name="language" onchange="submit()">
+                        <option value="ua" ${language == 'ua' ? 'selected' : ''}>Ukraine</option>
+                        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                    </select>
+                </form>
+            </div>
         <form method="post" action="/reg">
             <div class="centre">
                 <h1>Register</h1>
-                <p>Please fill in this form to create an account.</p>
+                <p><fmt:message key="registration.header">  </fmt:message> </p>
                 <c:if test="${requestScope.exist ne null}">
-                    <p>Email or login already exist!</p>
+                    <p><fmt:message key="registration.user.allready.exist"></fmt:message> </p>
                 </c:if>
                 <hr>
+
+
+
+
                 <br>
 
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <input type="text" placeholder="<fmt:message key="registration.email"></fmt:message>" name="email" required>
 
 
-                <input type="text" placeholder="Enter Login" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{3,19}$" required>
+                <input type="text" placeholder="<fmt:message key="registration.login"></fmt:message>" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{3,19}$" required>
 
 
-                <input type="password" placeholder="Enter Password" name="psw"  required>
+                <input type="password" placeholder="<fmt:message key="registration.password"></fmt:message>" name="psw"  required>
 
 
 
-                <input type="text" placeholder="Enter Name" name="name" required>
+                <input type="text" placeholder="<fmt:message key="registration.name"></fmt:message>" name="name" required>
 
 
-                <input type="text" placeholder="Enter Surname" name="surname" required>
+                <input type="text" placeholder="<fmt:message key="registration.surname"></fmt:message>" name="surname" required>
 
 
-                <tx class="text">Birth Date</tx>
+                <tx class="text"><fmt:message key="registtration.birth.date"></fmt:message></tx>
                 <div class="fallbackDatePicker">
       <span>
         <label for="day">Day:</label>

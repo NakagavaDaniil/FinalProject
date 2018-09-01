@@ -5,6 +5,7 @@ import model.entity.User;
 import model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
@@ -18,12 +19,25 @@ public class RegistrationCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
 
-        String FIRST_NAME = request.getParameter("name");
-        String LAST_NAME = request.getParameter("surname");
-        String EMAIL = request.getParameter("email");
-        String LOGIN = request.getParameter("login");
-        String PASSWORD=request.getParameter("psw");
+        String FIRST_NAME = null;
+        String LAST_NAME=null;
+        String LOGIN = null;
+        String PASSWORD= null;
+        String   EMAIL = request.getParameter("email");
+        try {
+            FIRST_NAME = new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
+
+            LAST_NAME = new String(request.getParameter("surname").getBytes("ISO-8859-1"),"UTF-8");
+
+            LOGIN = new String(request.getParameter("login").getBytes("ISO-8859-1"),"UTF-8");
+            PASSWORD=new String(request.getParameter("psw").getBytes("ISO-8859-1"),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         Date  BIRTH_DATE = dateConverter(request);
+
+
 
 
         User user = new User();
@@ -41,6 +55,7 @@ public class RegistrationCommand implements Command {
         if (userService.register(user)) {
             session.setAttribute("userLogin",user.getUSER_LOGIN());
             session.setAttribute("userId",user.getID());
+
             return "/view/jsp/main.jsp";
 
         } else {

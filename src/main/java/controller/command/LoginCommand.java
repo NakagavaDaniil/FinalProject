@@ -27,16 +27,19 @@ public class LoginCommand implements Command {
             return "view/jsp/main.jsp";
         }
 
-       try {
-          if (CommandUtility.checkUserIsLogged(login)) {
-              request.setAttribute("logged",true);
-              return "view/jsp/main.jsp";
-          }
-        }catch (Exception e){
-           e.printStackTrace();
-        }
+//       try {
+//          if (CommandUtility.checkUserIsLogged(login)) {
+//              request.setAttribute("logged",true);
+//              return "view/jsp/main.jsp";
+//          }
+//        }catch (Exception e){
+//           e.printStackTrace();
+//        }
         Optional<User> user = userService.login(login,password);
-
+       if(!user.isPresent()){
+           return "view/jsp/main.jsp";
+       }
+        System.out.println("isPresent");
        session.setAttribute("userLogin",user.get().getUSER_LOGIN());
         session.setAttribute("userId",user.get().getID());
 

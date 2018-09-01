@@ -1,6 +1,8 @@
 
 CREATE DATABASE `projectdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */
-
+url_characterEncoding=jdbc:mysql://localhost:3306/projectdb?characterEncoding=utf-8
+user=root
+password=password
 
 
 CREATE TABLE `answear_variants` (

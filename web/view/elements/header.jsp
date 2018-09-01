@@ -1,7 +1,15 @@
 
+<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
-<html lang="en">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="data"/>
+<!DOCTYPE html>
+<html lang="${language}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -24,12 +32,12 @@
                         <c:if test="${sessionScope.userLogin eq null}">
                       <div class="col-lg-1 ml-auto authentication">
                           <form action="/login" method="post" >
-                         <input type="text" class="input" placeholder="Login" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$">
-                           <input type="password" class="input" placeholder="Password" name="psw" >
-                              <p></p>  <button type="submit" class="btn_style"><a  class="text" >Login</a></button>
+                         <input type="text" class="input" placeholder="<fmt:message key="login.placeholder.login"/>" name="login"/>
+                           <input type="password" class="input" placeholder="<fmt:message key="login.placeholder.password"/>" name="psw" >
+                              <p></p>  <button type="submit" class="btn_style"><a  class="text" ><fmt:message key="login.login"/></a></button>
                          </form>
                           <form action="/registration">
-                              <p></p>  <button type="submit" class="btn_style"><a  class="text">Register</a></button>
+                              <p></p>  <button type="submit" class="btn_style"><a  class="text"><fmt:message key="login.reqistration"/></a></button>
                           </form>
                       </div>
                         </c:if>
@@ -42,11 +50,14 @@
                             </form>
                         </c:if>
                 <div  class="col-lg-1 ml-auto" >
-                    <ul class="menu   ml-auto locale_menu">
-                        <li><a class="text locale_a " href="/">ENG</a></li>
-                        <li><a class="text locale_a" href="/">UKR</a></li>
-
-                    </ul>
+                    <div align="right">
+                        <form>
+                            <select id="language" name="language" onchange="submit()">
+                                <option value="ua" ${language == 'ua' ? 'selected' : ''}>Ukraine</option>
+                                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                            </select>
+                        </form>
+                    </div>
 
             </div>
 

@@ -4,6 +4,7 @@ import model.service.UserService;
 import org.junit.Test;
 
 
+import java.sql.Date;
 import java.util.Optional;
 
 public class TestAll {
@@ -29,5 +30,19 @@ public class TestAll {
     public void testMyTeams(){
         PlayerService playerService = new PlayerService();
         System.out.println(playerService.getAllMyTeams(2));
+    }
+
+    @Test
+    public void testCreatUkrUser(){
+        User user = new User();
+        user.setEMAIL("Хлопак");
+        user.setUSER_PASSWORD("212");
+        user.setUSER_LOGIN("Логін");
+        user.setUSER_LAST_NAME("Піська");
+        user.setUSER_FIRST_NAME("ЇхалоЄ");
+        user.setBIRTH_DATE(new Date(12,12,12));
+        UserService userService = new UserService();
+        userService.register(user);
+
     }
 }

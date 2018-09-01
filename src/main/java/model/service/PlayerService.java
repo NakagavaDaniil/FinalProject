@@ -24,7 +24,7 @@ public class PlayerService {
         return player;
     }
     public List<Game> getGameHistory(String teamName){
-        List<Game> history = new ArrayList<>();
+        List<Game> history;
         history= playerDao.findAllGames(teamName);
         return history;
 
@@ -33,7 +33,7 @@ public class PlayerService {
 
     public List<Team> getAllTeams(){
 
-        List<Team> allTeams = new ArrayList<>();
+        List<Team> allTeams;
         allTeams = playerDao.findAllTeams();
         return allTeams;
     }
@@ -43,7 +43,7 @@ public class PlayerService {
     }
     public List<Team> getAllMyTeams(int id){
 
-        List<Team> allTeams = new ArrayList<>();
+        List<Team> allTeams;
         allTeams = playerDao.getMyTeams(id);
         return allTeams;
     }

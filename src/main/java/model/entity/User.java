@@ -88,7 +88,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "{"+getUSER_LOGIN()+"-login"+
-                "\n"+getUSER_PASSWORD()+"-password"+"}";
+        return "{"+getUSER_FIRST_NAME()+","+getUSER_LAST_NAME()+getUSER_LOGIN()+getEMAIL()+ "}";
     }
 }
