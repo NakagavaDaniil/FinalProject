@@ -3,9 +3,7 @@ package model.dao.impl;
 
 
 import model.connection.ConnectionPoolHolder;
-import model.dao.DaoFactory;
-import model.dao.PlayerDAO;
-import model.dao.UserDAO;
+import model.dao.*;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -15,9 +13,9 @@ public class JDBCDaoFactory extends DaoFactory {
 
     private DataSource dataSource = ConnectionPoolHolder.getDataSource();
 
-    public JDBCDaoFactory() throws SQLException {    }
+    public JDBCDaoFactory() {    }
 
-//    private Connection getConnection(){ return connection;    }
+
 
     @Override
     public UserDAO createUserDao() {
@@ -27,6 +25,16 @@ public class JDBCDaoFactory extends DaoFactory {
     @Override
     public PlayerDAO createPlayerDao() {
         return new JDBCPlayerDAO(getConnection());
+    }
+
+    @Override
+    public JudgeDAO createJudgeDao() {
+        return new JDBCJudgeDAO(getConnection());
+    }
+
+    @Override
+    public TeamDAO createTeamDao() {
+        return new JDBCTeamDAO(getConnection());
     }
 
 

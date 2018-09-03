@@ -14,8 +14,8 @@ import java.util.List;
 public class PlayerService {
 
 
-    DaoFactory daoFactory = DaoFactory.getInstance();
-    PlayerDAO playerDao = daoFactory.createPlayerDao();
+    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private PlayerDAO playerDao = daoFactory.createPlayerDao();
 
 
     public Player getById(int id){
@@ -31,22 +31,7 @@ public class PlayerService {
     }
 
 
-    public List<Team> getAllTeams(){
 
-        List<Team> allTeams;
-        allTeams = playerDao.findAllTeams();
-        return allTeams;
-    }
-
-    public Team getByNameTeam(String teamName){
-        return playerDao.findTeam(teamName);
-    }
-    public List<Team> getAllMyTeams(int id){
-
-        List<Team> allTeams;
-        allTeams = playerDao.getMyTeams(id);
-        return allTeams;
-    }
 
 
 }

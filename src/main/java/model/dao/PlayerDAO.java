@@ -19,9 +19,7 @@ public interface PlayerDAO extends GenericDao<Player> {
     List<Game>  findWins(String teamName);
     List<Game> findAllGames(String teamName);
 
-    List<Team> findAllTeams();
-    Team findTeam(String teamName);
-    List<Team> getMyTeams(int id);
+
 
 
 }

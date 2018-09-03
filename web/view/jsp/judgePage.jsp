@@ -32,7 +32,15 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
+        <c:if test="${requestScope.empList ne null}">
+            <c:forEach items="${requestScope.empList}" var="emp">
+                <tr>
+                    <p> <td>Name : <c:out value="${emp.tottalHintsGivenCount}"></c:out></td></p>
+                    <p> <td>Last name :<c:out value="${emp.tottalGamesCount}"></c:out></td></p>
 
+                </tr>
+            </c:forEach>
+        </c:if>
     </div>
 </div>
 <div class="row">

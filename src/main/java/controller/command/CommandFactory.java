@@ -1,6 +1,8 @@
 package controller.command;
 
+import model.service.JudgeService;
 import model.service.PlayerService;
+import model.service.TeamService;
 import model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +12,7 @@ import java.util.Map;
 public class CommandFactory {
     private static CommandFactory factory = new CommandFactory();
 
-    private Map<String, Command> command = new HashMap<String, Command>();
+    private Map<String, Command> command = new HashMap<>();
     private CommandFactory() {
 
     }
@@ -23,7 +25,7 @@ public class CommandFactory {
     }
 
     {
-//TODO add all commands
+
         command.put("/login", new LoginCommand(new UserService()));
         command.put("/main",new MainCommand());
         command.put("/reg",new RegistrationCommand(new UserService()));
@@ -31,14 +33,16 @@ public class CommandFactory {
         command.put("/logOut",new LogoutCommand());
         command.put("/userInfo", new UserInfoCommand(new UserService()));
         command.put("/playerInfo",new PlayerInfoCommand(new PlayerService()));
-        command.put("/teamInfo", new TeamInfoCommand(new PlayerService()));
+        command.put("/teamInfo", new TeamInfoCommand(new TeamService()));
+        command.put("/judgeInfo", new JudgeInfoCommand(new JudgeService()));
+        command.put("/questionInfo", new QuestionsCommand(new JudgeService()));
+
 
     }
 
     public Command getCommand(HttpServletRequest request) {
-        String action = request.getRequestURI();
-        System.out.println(action);
-        Command command = this.command.get(action);
-        return command;
+            String action = request.getRequestURI();
+        return this.command.get(action);
+
     }
 }

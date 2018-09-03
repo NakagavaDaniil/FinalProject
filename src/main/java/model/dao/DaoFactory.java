@@ -10,19 +10,15 @@ public abstract class DaoFactory {
 
     public abstract UserDAO createUserDao();
     public abstract PlayerDAO createPlayerDao();
+    public abstract JudgeDAO createJudgeDao();
+    public abstract TeamDAO createTeamDao();
 
 
     public static DaoFactory getInstance(){
         if( daoFactory == null ){
             synchronized (DaoFactory.class){
                 if(daoFactory==null){
-                    DaoFactory temp = null;
-                    try {
-                        temp = new JDBCDaoFactory();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                    daoFactory = temp;
+                    daoFactory = new JDBCDaoFactory();
                 }
             }
         }

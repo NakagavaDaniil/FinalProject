@@ -1,8 +1,6 @@
 package controller.command;
 
 
-
-import model.entity.Player;
 import model.entity.User;
 import model.service.UserService;
 
@@ -11,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfoCommand implements Command{
-    UserService userService;
+    private UserService userService;
 
-    public UserInfoCommand(UserService userService) {
+    UserInfoCommand(UserService userService) {
         this.userService = userService;
     }
 

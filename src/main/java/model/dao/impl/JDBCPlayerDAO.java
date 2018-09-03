@@ -16,7 +16,7 @@ public class JDBCPlayerDAO implements PlayerDAO {
     private Connection connection;
 
     //TODO ALL
-    public JDBCPlayerDAO(Connection connection) {
+    JDBCPlayerDAO(Connection connection) {
         this.connection = connection;
     }
 
@@ -96,53 +96,6 @@ public class JDBCPlayerDAO implements PlayerDAO {
         return null;
     }
 
-    @Override
-    public List<Team> findAllTeams() {
-        List<Team> result = null;
-        try (PreparedStatement ps = connection.prepareCall("SELECT *" +
-                " FROM teamname")) {
 
-            ResultSet rs;
-            rs = ps.executeQuery();
-            PlayerMapper mapper = new PlayerMapper();
 
-            if (rs.next()) {
-                //back iterator to 0 position
-               rs.beforeFirst();
-             result = mapper.extractFromResultSetTeam(rs);
-            }
-
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-        return result;
-
-    }
-
-    @Override
-    public Team findTeam(String teamName) {
-        return null;
-    }
-
-    @Override
-    public List<Team> getMyTeams(int id) {
-
-        List<Team> result = null;
-        try (PreparedStatement ps = connection.prepareCall("SELECT id, team_name,tottal_games,tottal_wins FROM teamname LEFT JOIN team_player tp on teamname.id = tp.team_id  WHERE player_id =?")) {
-            ps.setInt(1,id);
-            ResultSet rs;
-            rs = ps.executeQuery();
-            PlayerMapper mapper = new PlayerMapper();
-
-            if (rs.next()) {
-                //back iterator to 0 position
-                rs.beforeFirst();
-                result = mapper.extractFromResultSetTeam(rs);
-            }
-
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-        return result;
-    }
 }

@@ -22,8 +22,8 @@
     <li><a href="/userInfo" class="text"><span><fmt:message key="menu.button.home"/></span></a></li>
     <li><a href="/playerInfo" class="text"><span><fmt:message key="menu.button.player"/></span></a></li>
     <li><a href="/judgeInfo" class="text"><span><fmt:message key="menu.button.judge"/></span></a></li>
-    <li><a href="/teamInfo" class="text"><span><fmt:message key="menu.button.team"/></span></a></li>
-    <li><a href="/questionEditor" class="text"><span><fmt:message key="menu.button.questions"/></span></a></li>
+    <li><a href="/view/jsp/teamPage.jsp" class="text"><span><fmt:message key="menu.button.team"/></span></a></li>
+    <li><a href="/view/jsp/questionPage.jsp" class="text"><span><fmt:message key="menu.button.questions"/></span></a></li>
 </ul>
 </body>
 </html>

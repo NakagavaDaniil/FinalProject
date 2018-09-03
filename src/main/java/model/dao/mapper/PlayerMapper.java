@@ -26,20 +26,7 @@ public class PlayerMapper implements ObjectMapper<Player> {
         return player;
     }
 
-    public List<Team> extractFromResultSetTeam(ResultSet rs) throws SQLException {
-        List<Team> result = new ArrayList<>();
-        while (rs.next()) {
-            Team team = new Team();
-            team.setName(rs.getString("team_name"));
-            //TODO
-            System.out.println(rs.getString("team_name"));
-            team.setTottalGamesCount(rs.getInt("tottal_games"));
-            team.setTottalWinsCount(rs.getInt("tottal_wins"));
-            result.add(team);
-        }
 
-        return result;
-    }
 
     public Game extractPlayerGames(ResultSet rs){
         Game game = new Game();
@@ -63,7 +50,7 @@ public class PlayerMapper implements ObjectMapper<Player> {
         cache.putIfAbsent(player.getID(), player);
         return cache.get(player.getID());
     }
-    public  LocalDateTime getLocalDateTimeFromDB(ResultSet rs, String column)
+    private LocalDateTime getLocalDateTimeFromDB(ResultSet rs, String column)
             throws SQLException {
         String date = rs.getString(column);
         if (date != null) {

@@ -1,9 +1,7 @@
 package controller.command;
 
-import model.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.regex.Pattern;
+
 
 public class RegisterFormCommand implements Command {
 

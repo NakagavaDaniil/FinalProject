@@ -16,7 +16,7 @@ public class JDBCUserDAO implements UserDAO {
     private Connection connection;
 
 
-    public JDBCUserDAO(Connection connection) {
+    JDBCUserDAO(Connection connection) {
         this.connection = connection;
     }
 
@@ -66,11 +66,6 @@ return true;
         return result;
     }
 
-
-    @Override
-    public boolean update(User entity) {
-return true;
-    }
 
     @Override
     public Optional<User> getUser(String name, String password) {

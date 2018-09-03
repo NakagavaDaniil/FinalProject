@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class LoginCommand implements Command {
     private UserService userService;
-    public LoginCommand(UserService userService) {
+    LoginCommand(UserService userService) {
         this.userService=userService;
     }
 
@@ -27,14 +27,7 @@ public class LoginCommand implements Command {
             return "view/jsp/main.jsp";
         }
 
-//       try {
-//          if (CommandUtility.checkUserIsLogged(login)) {
-//              request.setAttribute("logged",true);
-//              return "view/jsp/main.jsp";
-//          }
-//        }catch (Exception e){
-//           e.printStackTrace();
-//        }
+
         Optional<User> user = userService.login(login,password);
        if(!user.isPresent()){
            return "view/jsp/main.jsp";

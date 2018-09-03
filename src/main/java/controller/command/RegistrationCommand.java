@@ -6,34 +6,30 @@ import model.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
 public class RegistrationCommand implements Command {
     private UserService userService;
 
-    public RegistrationCommand(UserService userService) {
+    RegistrationCommand(UserService userService) {
         this.userService = userService;
     }
 
     @Override
     public String execute(HttpServletRequest request) {
 
-        String FIRST_NAME = null;
-        String LAST_NAME=null;
-        String LOGIN = null;
-        String PASSWORD= null;
+        String firstName;
+        String lastName;
+        String login;
         String   EMAIL = request.getParameter("email");
-        try {
-            FIRST_NAME = new String( request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
+        firstName = new String( request.getParameter("name").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 
-            LAST_NAME = new String(request.getParameter("surname").getBytes("ISO-8859-1"),"UTF-8");
+        lastName = new String(request.getParameter("surname").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 
-            LOGIN = new String(request.getParameter("login").getBytes("ISO-8859-1"),"UTF-8");
-            PASSWORD=new String(request.getParameter("psw").getBytes("ISO-8859-1"),"UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        login = new String(request.getParameter("login").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+        String password = new String(request.getParameter("psw").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
 
         Date  BIRTH_DATE = dateConverter(request);
 
@@ -41,11 +37,11 @@ public class RegistrationCommand implements Command {
 
 
         User user = new User();
-        user.setUSER_FIRST_NAME(FIRST_NAME);
-        user.setUSER_LAST_NAME(LAST_NAME);
+        user.setUSER_FIRST_NAME(firstName);
+        user.setUSER_LAST_NAME(lastName);
         user.setEMAIL(EMAIL);
-        user.setUSER_LOGIN(LOGIN);
-        user.setUSER_PASSWORD(PASSWORD);
+        user.setUSER_LOGIN(login);
+        user.setUSER_PASSWORD(password);
         user.setBIRTH_DATE(BIRTH_DATE);
 
         HttpSession session = request.getSession();

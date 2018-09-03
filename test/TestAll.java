@@ -1,5 +1,6 @@
 import model.entity.User;
 import model.service.PlayerService;
+import model.service.TeamService;
 import model.service.UserService;
 import org.junit.Test;
 
@@ -13,23 +14,19 @@ public class TestAll {
         UserService userService = new UserService();
         Optional<User> user =userService.login("admin","1");
 
-        System.out.println(user.get());
     }
     @Test
     public void testPlayer(){
         PlayerService playerService = new PlayerService();
-        System.out.println(playerService.getById(2));
 
     }
     @Test
     public void testTeams(){
-        PlayerService playerService = new PlayerService();
-        System.out.println(playerService.getAllTeams());
+        TeamService playerService = new TeamService();
     }
     @Test
     public void testMyTeams(){
-        PlayerService playerService = new PlayerService();
-        System.out.println(playerService.getAllMyTeams(2));
+        TeamService playerService = new TeamService();
     }
 
     @Test
