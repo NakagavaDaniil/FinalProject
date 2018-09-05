@@ -46,20 +46,20 @@
 
                 <br>
 
-                <input type="text" placeholder="<fmt:message key="registration.email"></fmt:message>" name="email" required>
+                <input type="text" placeholder="<fmt:message key="registration.email"></fmt:message>" name="email" pattern="<fmt:message key="req.exp.email"></fmt:message> " required>
 
 
-                <input type="text" placeholder="<fmt:message key="registration.login"></fmt:message>" name="login" pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{3,19}$" required>
+                <input type="text" placeholder="<fmt:message key="registration.login"></fmt:message>" name="login" pattern="<fmt:message key="req.exp.login"></fmt:message>" required>
 
 
-                <input type="password" placeholder="<fmt:message key="registration.password"></fmt:message>" name="psw"  required>
+                <input type="password" placeholder="<fmt:message key="registration.password"></fmt:message>" name="psw" pattern="<fmt:message key="req.exp.password"></fmt:message>" required>
 
 
 
-                <input type="text" placeholder="<fmt:message key="registration.name"></fmt:message>" name="name" required>
+                <input type="text" placeholder="<fmt:message key="registration.name"></fmt:message>" name="name" pattern="<fmt:message key="req.exp.name.surname"></fmt:message>" required>
 
 
-                <input type="text" placeholder="<fmt:message key="registration.surname"></fmt:message>" name="surname" required>
+                <input type="text" placeholder="<fmt:message key="registration.surname"></fmt:message>" name="surname" pattern="<fmt:message key="req.exp.name.surname"></fmt:message>" required>
 
 
                 <tx class="text"><fmt:message key="registtration.birth.date"></fmt:message></tx>

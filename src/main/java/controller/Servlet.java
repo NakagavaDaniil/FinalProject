@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.regex.Pattern;
+
 
 public class Servlet  extends HttpServlet {
+
+
+
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 
@@ -33,7 +36,6 @@ public class Servlet  extends HttpServlet {
         Command command = commandFactory.getCommand(httpServletRequest);
         String page = command.execute(httpServletRequest);
         RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(page);
-
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

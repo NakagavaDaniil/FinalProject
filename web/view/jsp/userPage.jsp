@@ -35,9 +35,9 @@
         <c:if test="${requestScope.empList ne null}">
         <c:forEach items="${requestScope.empList}" var="emp">
             <tr>
-               <p> <td>Name : <c:out value="${emp.USER_FIRST_NAME}"></c:out></td></p>
-               <p> <td>Last name :<c:out value="${emp.USER_LAST_NAME}"></c:out></td></p>
-               <p><td>Birth date :<c:out value="${emp.BIRTH_DATE}"></c:out></td></p>
+               <p> <td><fmt:message key="registration.name"></fmt:message> <c:out value="${emp.USER_FIRST_NAME}"></c:out></td></p>
+               <p> <td><fmt:message key="registration.surname"></fmt:message> :<c:out value="${emp.USER_LAST_NAME}"></c:out></td></p>
+               <p><td><fmt:message key="registtration.birth.date"></fmt:message> :<c:out value="${emp.BIRTH_DATE}"></c:out></td></p>
 
                <p> <td>Password : <c:out value="${emp.USER_PASSWORD}"></c:out></td></p>
                <p><td>Email :<c:out value="${emp.EMAIL}"></c:out></td></p>

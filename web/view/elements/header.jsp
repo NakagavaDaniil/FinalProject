@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -52,10 +53,12 @@
                 <div  class="col-lg-1 ml-auto" >
                     <div align="right">
                         <form>
+                            <c:if test="${sessionScope.userId eq null}">
                             <select id="language" name="language" onchange="submit()">
                                 <option value="ua" ${language == 'ua' ? 'selected' : ''}>Ukraine</option>
                                 <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                             </select>
+                            </c:if>
                         </form>
                     </div>
 

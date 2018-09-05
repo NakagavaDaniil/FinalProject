@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 public class Game {
@@ -51,4 +52,5 @@ public class Game {
     public void setDateTimeOfGame(LocalDateTime dateTimeOfGame) {
         this.dateTimeOfGame = dateTimeOfGame;
     }
+
 }

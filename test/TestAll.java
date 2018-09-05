@@ -1,11 +1,15 @@
 import model.entity.User;
+import model.service.JudgeService;
 import model.service.PlayerService;
 import model.service.TeamService;
 import model.service.UserService;
+import org.junit.Assert;
 import org.junit.Test;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class TestAll {
@@ -14,19 +18,6 @@ public class TestAll {
         UserService userService = new UserService();
         Optional<User> user =userService.login("admin","1");
 
-    }
-    @Test
-    public void testPlayer(){
-        PlayerService playerService = new PlayerService();
-
-    }
-    @Test
-    public void testTeams(){
-        TeamService playerService = new TeamService();
-    }
-    @Test
-    public void testMyTeams(){
-        TeamService playerService = new TeamService();
     }
 
     @Test
@@ -41,5 +32,22 @@ public class TestAll {
         UserService userService = new UserService();
         userService.register(user);
 
+    }
+
+
+    @Test
+    public void testGetTeamPlayer(){
+        TeamService playerService = new TeamService();
+        List<String> sad;
+        sad = playerService.getTeamPLayer(2);
+        System.out.println(sad);
+    }
+
+
+    @Test
+    public void testQuestion(){
+        JudgeService judgeService = new JudgeService();
+        judgeService.getAllQuest();
+        Assert.assertNotNull(judgeService.getAllQuest());
     }
 }

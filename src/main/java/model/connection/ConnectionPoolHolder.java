@@ -6,26 +6,6 @@ import javax.sql.DataSource;
 
 public class ConnectionPoolHolder {
 
-    //    private static Connection connection;
-//        public static Connection getConnection() throws SQLException {
-//            if(connection==null){
-//
-//                try {
-//
-//                        Class.forName("com.mysql.jdbc.Driver");
-//
-//                    ResourceBundle sqlData = ResourceBundle.getBundle("MySqlConnection");
-//
-//                    connection = DriverManager.getConnection(sqlData.getString("url_characterEncoding"),
-//                            sqlData.getString("user"),
-//                            sqlData.getString("password"));
-//
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
-//            return connection;
-//        }
 private static volatile DataSource dataSource;
     public static DataSource getDataSource(){
 

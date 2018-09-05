@@ -1,8 +1,6 @@
 
-CREATE DATABASE `projectdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */
-url_characterEncoding=jdbc:mysql://localhost:3306/projectdb?characterEncoding=utf-8
-user=root
-password=password
+CREATE DATABASE `projectdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+
 
 
 CREATE TABLE `answear_variants` (
@@ -13,7 +11,7 @@ CREATE TABLE `answear_variants` (
   PRIMARY KEY (`id`),
   KEY `answear_variants_questions_id_fk` (`id_question`),
   CONSTRAINT `answear_variants_questions_id_fk` FOREIGN KEY (`id_question`) REFERENCES `questions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `gamehistory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +21,7 @@ CREATE TABLE `gamehistory` (
   `judge_login` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `game_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `judge` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -37,7 +35,7 @@ CREATE TABLE `judge` (
   CONSTRAINT `judge_questions_id_fk` FOREIGN KEY (`question_list`) REFERENCES `questions` (`id`),
   CONSTRAINT `judge_user_login_fk` FOREIGN KEY (`judge_login`) REFERENCES users (`login`),
   CONSTRAINT `judge_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES users (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `player` (
   `id` int(11) DEFAULT NULL,
@@ -49,14 +47,14 @@ CREATE TABLE `player` (
   KEY `player_user_user_id_fk` (`id`),
   CONSTRAINT `player_user_login_fk` FOREIGN KEY (`user_login`) REFERENCES users (`login`),
   CONSTRAINT `player_user_user_id_fk` FOREIGN KEY (`id`) REFERENCES users (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `questions_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `questtion_judge` (
   `id_question` int(11) DEFAULT NULL,
@@ -65,7 +63,7 @@ CREATE TABLE `questtion_judge` (
   KEY `questtion_judge_questions_id_fk` (`id_question`),
   CONSTRAINT `questtion_judge_judge_id_fk` FOREIGN KEY (`id_judge`) REFERENCES `judge` (`id`),
   CONSTRAINT `questtion_judge_questions_id_fk` FOREIGN KEY (`id_question`) REFERENCES `questions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `team_player` (
   `player_id` int(11) DEFAULT NULL,
@@ -74,7 +72,9 @@ CREATE TABLE `team_player` (
   KEY `team_player_player_id_fk` (`player_id`),
   CONSTRAINT `team_player_player_id_fk` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`),
   CONSTRAINT `team_player_teamname_id_fk` FOREIGN KEY (`team_id`) REFERENCES `teamname` (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ALTER TABLE projectdb.team_player
+  ADD CONSTRAINT uq_team_player UNIQUE(player_id, team_id);
 
 CREATE TABLE `teamname` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -83,7 +83,7 @@ CREATE TABLE `teamname` (
   `tottal_games` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `team_id_uindex` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,

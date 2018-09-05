@@ -4,10 +4,13 @@ import model.service.JudgeService;
 import model.service.PlayerService;
 import model.service.TeamService;
 import model.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class CommandFactory {
     private static CommandFactory factory = new CommandFactory();
@@ -17,6 +20,11 @@ public class CommandFactory {
 
     }
 
+
+    /**
+     * SingleTon pattern
+     * @return CommandFactory
+     */
     public static CommandFactory commandFactory() {
         if (factory == null) {
             factory = new CommandFactory();
@@ -24,6 +32,10 @@ public class CommandFactory {
         return factory;
     }
 
+
+    /**
+     * init HashMap with commands
+     */
     {
 
         command.put("/login", new LoginCommand(new UserService()));
@@ -40,7 +52,14 @@ public class CommandFactory {
 
     }
 
+    /**
+     * @param request
+     * return page url with new data
+     * @return Command
+     *
+     */
     public Command getCommand(HttpServletRequest request) {
+
             String action = request.getRequestURI();
         return this.command.get(action);
 

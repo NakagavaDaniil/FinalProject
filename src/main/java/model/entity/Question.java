@@ -1,20 +1,34 @@
 package model.entity;
 
 import java.util.ArrayList;
+import java.util.Locale;
+
 
 public class Question {
 
+    private int id;
     private String question;
-    private ArrayList<String> answear;
+    private String answear;
+    private String  language;
     private ArrayList<String> variantsOfAnswear;
 
     public Question() {
     }
 
-    public Question(String question, ArrayList<String> answear, ArrayList<String> variantsOfAnswear) {
-        this.question = question;
-        this.answear = answear;
-        this.variantsOfAnswear = variantsOfAnswear;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getQuestion() {
@@ -25,11 +39,11 @@ public class Question {
         this.question = question;
     }
 
-    public ArrayList<String> getAnswear() {
+    public String getAnswear() {
         return answear;
     }
 
-    public void setAnswear(ArrayList<String> answear) {
+    public void setAnswear(String answear) {
         this.answear = answear;
     }
 

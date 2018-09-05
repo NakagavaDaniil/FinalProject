@@ -5,5 +5,5 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 
 public interface Command {
-     String execute(HttpServletRequest request);
+     String execute(HttpServletRequest request) throws NullPointerException;
 }

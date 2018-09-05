@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Team {
 
-
+    private int id;
    private ArrayList<Player> team;
    private String name;
    private int tottalWinsCount;
@@ -13,6 +13,14 @@ public class Team {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {

@@ -17,6 +17,14 @@ public class PlayerInfoCommand implements Command {
         this.playerService = playerService;
     }
 
+    /**
+     * @param request
+     *
+     * get player data from DB
+     * to page
+     * @return page url
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
 

@@ -18,8 +18,11 @@ public class JudgeInfoCommand implements Command{
 
 
         List<User> empList = new ArrayList<>();
-        empList.add(judgeService.getById((Integer) request.getSession().getAttribute("userId")));
+        String userLogin = (String) request.getSession().getAttribute("userLogin");
+        int userId = (int) request.getSession().getAttribute("userId");
+        empList.add(judgeService.findById(userId));
         request.setAttribute("empList", empList);
+        request.setAttribute("history",judgeService.getHistory(userLogin));
 
         return "/view/jsp/judgePage.jsp";
     }

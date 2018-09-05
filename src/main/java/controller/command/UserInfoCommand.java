@@ -15,6 +15,12 @@ public class UserInfoCommand implements Command{
         this.userService = userService;
     }
 
+    /**
+     * @param request
+     * adding data about user
+     *
+     * @return page url
+     */
     @Override
     public String execute(HttpServletRequest request) {
 

@@ -15,7 +15,7 @@ import java.util.List;
 public class JDBCPlayerDAO implements PlayerDAO {
     private Connection connection;
 
-    //TODO ALL
+
     JDBCPlayerDAO(Connection connection) {
         this.connection = connection;
     }
@@ -60,42 +60,9 @@ public class JDBCPlayerDAO implements PlayerDAO {
         }
     }
 
-    @Override
-    public List<Game> getGameHistoy(List<Team> teamList) {
-        return null;
-    }
-
-    @Override
-    public List<Game> findLoses(List<String> teamList) {
-        return null;
-    }
-
-    @Override
-    public List<Game> findWins(List<String> teamList) {
-        return null;
-    }
-
-    @Override
-    public List<Game> findAllGames() {
-        return null;
-    }
-
-
-    @Override
-    public List<Game> findLoses(String teamName) {
-        return null;
-    }
-
-    @Override
-    public List<Game> findWins(String teamName) {
-        return null;
-    }
 
     @Override
     public List<Game> findAllGames(String teamName) {
         return null;
     }
-
-
-
 }
